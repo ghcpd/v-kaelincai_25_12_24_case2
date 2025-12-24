@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Filtering - E-Commerce Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📦 Order Management Dashboard</h1>
+            <p class="subtitle">Filter and view your orders</p>
+        </header>
+
+        <div class="filter-section">
+            <h2>Filter by Date Range</h2>
+            <div class="date-filters">
+                <div class="date-input-group">
+                    <label for="start-date">Start Date:</label>
+                    <input type="date" id="start-date" class="date-picker">
+                </div>
+                <div class="date-input-group">
+                    <label for="end-date">End Date:</label>
+                    <input type="date" id="end-date" class="date-picker">
+                </div>
+                <button id="filter-btn" class="btn-primary">Apply Filter</button>
+                <button id="clear-btn" class="btn-secondary">Clear</button>
+            </div>
+            <div id="filter-status" class="status-message"></div>
+        </div>
+
+        <div class="orders-section">
+            <h2>Orders (<span id="order-count">0</span>)</h2>
+            <div id="orders-container" class="orders-grid">
+                <p class="loading">Loading orders...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

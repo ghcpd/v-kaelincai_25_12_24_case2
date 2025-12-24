@@ -1,0 +1,252 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+h1 {
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: #666;
+    font-size: 1rem;
+}
+
+/* Filter Section */
+.filter-section {
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.filter-section h2 {
+    color: #333;
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+}
+
+.date-filters {
+    display: flex;
+    gap: 15px;
+    align-items: flex-end;
+    flex-wrap: wrap;
+}
+
+.date-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.date-input-group label {
+    font-weight: 600;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+/* 
+ * FIX: Removed absolute positioning on ::-webkit-calendar-picker-indicator
+ * and removed Safari-specific rule that hid the indicator. Safari handles
+ * positioning differently and does not play well with absolute positioned
+ * pseudo-elements. We keep background and size but rely on native positioning.
+ */
+.date-picker {
+    padding: 10px 15px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    width: 200px;
+    transition: border-color 0.3s;
+    position: relative;
+    background: white;
+    /* Provide some right padding so the native indicator has space */
+    padding-right: 40px;
+}
+
+.date-picker:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+/* Keep styling for the calendar indicator but avoid absolute positioning */
+.date-picker::-webkit-calendar-picker-indicator {
+    /* Do NOT use absolute positioning here — let the browser handle layout */
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23667eea"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/></svg>') center/contain no-repeat;
+    opacity: 0.7;
+}
+
+.date-picker::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
+}
+
+/* Removed the Safari-specific rule that set display: none on the indicator */
+
+/* Buttons */
+.btn-primary,
+.btn-secondary {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 600;
+}
+
+.btn-primary {
+    background: #667eea;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #5568d3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+    background: #e0e0e0;
+    color: #333;
+}
+
+.btn-secondary:hover {
+    background: #d0d0d0;
+}
+
+/* Status Message */
+.status-message {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    display: none;
+}
+
+.status-message.show {
+    display: block;
+}
+
+.status-message.success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.status-message.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Orders Section */
+.orders-section h2 {
+    color: #333;
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+}
+
+.orders-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.order-card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    transition: all 0.3s;
+}
+
+.order-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.order-id {
+    font-weight: bold;
+    color: #667eea;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.order-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.order-info strong {
+    color: #333;
+}
+
+.order-status {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.status-completed {
+    background: #d4edda;
+    color: #155724;
+}
+
+.status-pending {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.status-shipped {
+    background: #d1ecf1;
+    color: #0c5460;
+}
+
+.loading {
+    text-align: center;
+    color: #666;
+    padding: 40px;
+}
+
+.no-orders {
+    text-align: center;
+    color: #999;
+    padding: 40px;
+    font-style: italic;
+}
